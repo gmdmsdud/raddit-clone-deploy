@@ -44,12 +44,13 @@ const PostCreate = () => {
                         />
                         <div 
                             style={{top:10, right:10, }}
-                            className='absolute mb-2 text-sm text-gray-400 select-none'
+                            className='absolute mb-2 text-sm text-gray-400 select-none '
                         >
-                          /20
+                          {title.trim().length}/20
                         </div>
                     </div>
                     <textarea
+                      wrap="hard"
                       rows={4}
                       placeholder='설명'
                       className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500"

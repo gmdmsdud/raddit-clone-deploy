@@ -8,7 +8,6 @@ import Sub from "../entities/Sub";
 import Post from "../entities/Post";
 import multer, { FileFilterCallback } from "multer";
 import path from "path";
-import { callbackify } from "util";
 import { makeId } from "../utils/helpers";
 import { unlinkSync } from "fs";
  
@@ -27,8 +26,6 @@ const getSub =async (req: Request, res: Response) => {
     if(res.locals.user) {
       sub.posts.forEach((p) => p.setUserVote(res.locals.user));
     }
-
-    console.log('sub', sub)
 
     return res.json(sub);
   } catch (error) {
@@ -137,7 +134,7 @@ const uploadSubImage =async (req: Request, res: Response) =>{
     const type = req.body.type;
     if(type !=="image" && type !=="banner"){
       if (!req.file?.path){
-        return res.status(400).json({ error:"유효하지 않은 파일ㄹ"})
+        return res.status(400).json({ error:"유효하지 않은 파일"})
 
       }
       unlinkSync(req.file.path);

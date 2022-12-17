@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar';
 import { useRouter } from 'next/router';
 import { SWRConfig } from 'swr';
 import axios from 'axios';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
   Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SURVER_BASE_URL + "/api";
@@ -25,18 +26,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
 }
 
-  return <SWRConfig
+  return <>
+  <Head>
+  <script src="https://kit.fontawesome.com/0d9816814b.js" crossOrigin="anonymous"></script>
+  </Head>
+  
+  <SWRConfig
     value = {{
       fetcher
     }}>
     <AuthProvider>
       {!authRoute && <NavBar />}
-      <div className={authRoute ? "":"pt-16"}>
+      <div className={authRoute ? "":"pt-12 bg-gray-200 min-h-screen"}>
       <Component {...pageProps} />
       </div>
       </AuthProvider>
 
   </SWRConfig>
+  </>
 
 
 }

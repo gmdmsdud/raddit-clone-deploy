@@ -1,12 +1,13 @@
 import {Exclude,Expose} from 'class-transformer';
 
 import { BeforeInsert, Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { makeId, slugify } from "../utils/helpers";
+import { makeId } from "../utils/helpers";
 import Comment from './Comment';
 import BaseEntity from './Entity' 
 import Sub from "./Sub";
 import { User } from "./User";
 import Vote from './Vote';
+import {slugify} from "transliteration";
 
 @Entity("posts")
 export default class Post extends BaseEntity {
@@ -36,6 +37,7 @@ export default class Post extends BaseEntity {
 
     @ManyToOne(() => Sub, (sub) => sub.posts)
     @JoinColumn({name: "subName", referencedColumnName: "name"})
+    sub: Sub;
 
     @Exclude()
     @OneToMany(() => Comment, (comment) =>comment.post)
@@ -44,10 +46,10 @@ export default class Post extends BaseEntity {
     @Exclude()
     @OneToMany(()=> Vote, (vote) =>vote.post) 
     votes: Vote[];
-    sub: any;
+    
 
     @Expose() get url():string {
-        return `r/${this.subName}/${this.identifier}/${this.slug}`
+        return `/r/${this.subName}/${this.identifier}/${this.slug}`
     }
 
     @Expose() get commentCount(): number{

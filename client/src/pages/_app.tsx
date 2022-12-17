@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return <>
   <Head>
-  <script src="https://kit.fontawesome.com/0d9816814b.js" crossOrigin="anonymous"></script>
+  <script defer src="https://kit.fontawesome.com/0d9816814b.js" crossOrigin="anonymous"></script>
   </Head>
   
   <SWRConfig

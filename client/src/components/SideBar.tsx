@@ -17,7 +17,7 @@ const SideBar = ({sub}: Props) => {
             </div>
             <div className='p-3'>
                 <p className='mb-3 text-base'>{sub?.description}</p>
-                <div className='flex mb-3 text-sm font-midium'>
+                <div className='flex mb-3 text-sm font-um'>
                     <div className='w-1/2'>
                         <p>100</p>
                         <p>멤버</p>

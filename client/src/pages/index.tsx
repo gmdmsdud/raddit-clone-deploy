@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const fetcher =async (url:string) => {
     return await axios.get(url).then(res => res.data)
   }
-  const address ="/subs/sub/topSubs";
+  const address =`/subs/sub/topSubs`;
 
   const getKey = (pageIndex : number, previousPageData: Post[]) => {
     if(previousPageData && !previousPageData.length) return null;
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
       <div className='hidden w-4/12 ml-3 md:block'>
         <div className='bg-white border rounded'>
           <div className='p-4 border-b'>
-            <p className='text-lg font-semibold text-center'>커뮤니티 주제</p>
+            <p className='text-lg font-semibold text-center'>커뮤니티</p>
           </div>
           
           {/* 커뮤니티리스트 */}

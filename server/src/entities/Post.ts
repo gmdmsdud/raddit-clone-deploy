@@ -39,7 +39,7 @@ export default class Post extends BaseEntity {
     @JoinColumn({name: "subName", referencedColumnName: "name"})
     sub: Sub;
 
-    @Exclude()
+    @Exclude() //comments 라는 프로퍼티를스킵
     @OneToMany(() => Comment, (comment) =>comment.post)
     comments:Comment[];
 
@@ -69,9 +69,9 @@ export default class Post extends BaseEntity {
 
     }
 
-    @BeforeInsert()
-    makeIdAndSlug() {
-        this.identifier = makeId(7);
+    @BeforeInsert()//저장하기전에 먼가 해준다
+    makeIdAndSlug() {//utils>helpers.ts에 함수를만들어 저장해준다
+        this.identifier = makeId(7);//자동으로 7자리 아이디를 만들어준다
         this.slug = slugify(this.title);
     }
 }

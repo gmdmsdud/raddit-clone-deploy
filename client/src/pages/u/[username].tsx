@@ -63,7 +63,7 @@ const UserPage = () => {
           <div className='flex items-center p-3 bg-gray-400 rounded-t'>
             <Image src='https://www.gravatar.com/avatar/00000?d=mp&f=y'
                    alt='user profile'
-                   className='mx-auto border border-whiterounded-full'
+                   className='mx-auto border border-white rounded-full'
                    width={40}
                    height={40}
                    />

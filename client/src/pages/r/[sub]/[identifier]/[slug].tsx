@@ -17,6 +17,9 @@ const PostPage = () => {
     const [newComment, setNewComment] = useState("")
     const { data: post, error, mutate:postMutate} = useSWR<Post>(identifier && slug ? `/posts/${identifier}/${slug}`: null,)
     const { data: comments, mutate:commentMutate } = useSWR<Comment[]>(identifier && slug ? `/posts/${identifier}/${slug}/comments`: null,)
+    const prestyle = {
+        whiteSpace: "pre-wrap"
+    }
     
     const handleSubmit =async(e: FormEvent) => {
         e.preventDefault();
@@ -97,7 +100,7 @@ const PostPage = () => {
                                     {/* <button>Delete</button> */}
                                 </div>
                                 <h1 className="my-1 text-xl font-medium">{post.title}</h1>
-                                <pre className="my-3 text-sm">{post.body}</pre>
+                                <pre style={{ whiteSpace: "pre-wrap"}} className="my-3 text-sm">{post.body}</pre>
                                 <div className="flex">
                                     <button>
                                         <i className="mr-1 fas fa-comment-alt fa-xs"></i>
@@ -183,12 +186,13 @@ const PostPage = () => {
                                             `}
                                         </span>
                                     </p>
-                                    <p>{comment.body}</p>
+                                   
+                                    <pre style={{ whiteSpace: "pre-wrap"}} className="px-1 mx-1 py-2 " >{comment.body}</pre>
+
                                 </div>
 
                             </div>
                         ))}
-                        {/* ? comment 있을때만  */}
                     </>
                 )}
             </div>

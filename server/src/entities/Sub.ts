@@ -32,7 +32,7 @@ export default class Sub extends BaseEntity {
     @OneToMany(()=>Post, (post)=> post.sub)
     posts:Post[]
 
-    @Expose()
+    @Expose() //class transfomer에서 갖고온다
     get imageUrl(): string {
         return this.imageUrn ? ` ${process.env.APP_URL}/images/${this.imageUrn}` :
         "https://www.gravatar.com/avatar?d=mp&f=y"

@@ -18,9 +18,9 @@ const Register = () => {
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
-        
+        //백엔드에 회원가입을 위한 요청 및 회원가입 후 로그인 페이지로 자동 이동
         try {
-            const res = await axios.post('/auth/register', {
+            const res = await axios.post('/auth/register', {//요청을 보내서 백앤드에서 데이터베이스에 저장하기 위해 npm i axios --save 설치 axios요청을 보내는 모듈
                 email,
                 password,
                 username
@@ -36,8 +36,10 @@ const Register = () => {
     return (
         <div className='bg-white'>
             <div className="flex flex-col items-center justify-center h-screen p-6">
-                <div className="w-10/12 mx-auto md:w-96">
+                <div className="w-10/12 mx-auto md:w-96"> 
+                {/* width가 medium보다 클때 w를 ~ */}
                     <h1 className='mb-2 text-lg font-medium'>회원가입</h1>
+                    {/* text-lg 글씨크기 font-medium 글씨 굵기 */}
                     <form onSubmit={handleSubmit}>
                         <InputGroup 
                             placeholder='Email'

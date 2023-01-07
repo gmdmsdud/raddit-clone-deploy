@@ -15,11 +15,11 @@ const mapError =(errors:Object[])=>{
     },{})
 }
 
-const me = async (_:Request, res:Response) => {
+const me = async (_:Request, res:Response) => {//
     return res.json (res.locals.user);
 }
 
-const register = async(req: Request, res:Response) => {
+const register = async(req: Request, res:Response) => {//req,res 두개의객체를 이용하서 client register res에서 받아온 것이 여기 req안에들어있고 여기res를 이용해 프론트에 다시 보내줄수있다.
     const {email, username,password } =req.body;
    
     try {
@@ -32,7 +32,7 @@ const register = async(req: Request, res:Response) => {
         if(usernameUser) errors.username = "이미 이 사용자 이름이 사용되었습니다."
 
         if(Object.keys(errors).length > 0) {
-            return res.status(400).json(errors)
+            return res.status(400).json(errors)//json으로 에러코드를 준다 클라이언트가 에러확인할수있게
         }
         const user =new User();
         user.email = email;
@@ -51,7 +51,7 @@ const register = async(req: Request, res:Response) => {
     }
 }
 const login=async(req: Request, res:Response) => {
-    const {username,password} =req.body;
+    const { username, password } = req.body;
     try {
         let errors:any={}
         if(isEmpty(username)) errors.username ="사용자 이름은 비워둘수 없습니다.";
@@ -70,10 +70,10 @@ const login=async(req: Request, res:Response) => {
             return res.status(401).json({password: "비밀번호가 잘못되었습니다."})
 
         }
-        const token =jwt.sign({username},process.env.JWT_SECRET);
+        const token =jwt.sign({username}, process.env.JWT_SECRET); //비밀번호가 맞으면 토큰생성 npm i jsonwebtoken dotenv cookie--save  npm i --save-dev @types/jsonwebtoken @types/cookie
 
-        res.set("Set-Cookie", cookie.serialize("token", token, {
-            httpOnly: true,
+        res.set("Set-Cookie", cookie.serialize("token", token, {  //쿠키 옵션설정
+            httpOnly: true, //자바스크립트 같은 클라이언트측스크립트가 쿠키를사용할수없게
             maxAge:60*60*24*7,
             path: "/",
         }));

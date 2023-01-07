@@ -103,7 +103,7 @@ const PostCard = ({post: {
                     <a className=' my-1 text-lg font-medium'>{title}</a>
                     
                 </Link>
-                {body && <pre style={{ whiteSpace: "pre-wrap"}} className='my-1 text-sm' >{body}</pre>}
+                {body && <pre style={{ whiteSpace: "pre-wrap"}} className='my-1 text-sm' >{body.length>150 ? `${body.slice(0,150)} ...` :body}</pre>}
                 <div className="flex">
                     <Link href={url}>
                         <a>

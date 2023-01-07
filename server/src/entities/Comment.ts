@@ -35,7 +35,7 @@ export default class Comment extends BaseEntity {
     protected userVote: number;
 
     setUserVote(user: User) {
-        const index =this.votes?.findIndex((v) =>v.username ===user.username);
+        const index =this.votes?.findIndex((v) =>v.username ===user.username);//findIndex() 없으면 -1을 출력
         this.userVote = index >-1 ? this.votes[index].value : 0;
     }
     @Expose()get voteScore(): number { 

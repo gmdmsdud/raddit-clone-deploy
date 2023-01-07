@@ -17,9 +17,7 @@ const PostPage = () => {
     const [newComment, setNewComment] = useState("")
     const { data: post, error, mutate:postMutate} = useSWR<Post>(identifier && slug ? `/posts/${identifier}/${slug}`: null,)
     const { data: comments, mutate:commentMutate } = useSWR<Comment[]>(identifier && slug ? `/posts/${identifier}/${slug}/comments`: null,)
-    const prestyle = {
-        whiteSpace: "pre-wrap"
-    }
+   
     
     const handleSubmit =async(e: FormEvent) => {
         e.preventDefault();

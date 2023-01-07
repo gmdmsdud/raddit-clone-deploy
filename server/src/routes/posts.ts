@@ -8,7 +8,7 @@ import Comment from "../entities/Comment";
 
 const getPosts =async (req: Request, res: Response) =>{
     const currentPage: number = (req.query.page || 0) as number //페이지가있으면 사용하고 없으면 0으로
-    const perPage: number = (req.query.count || 4) as number //카운트가 있으면 카운트를 사용하고 없으면 8개
+    const perPage: number = (req.query.count || 3) as number //카운트가 있으면 카운트를 사용하고 없으면 8개
 
     try {
         const posts = await Post.find({

@@ -14,7 +14,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-const origin = process.env.ORIGIN;
+const origin = process.env.ORIGIN; //npm install cors --save
 app.use(cors({
     origin, credentials:true
 }))

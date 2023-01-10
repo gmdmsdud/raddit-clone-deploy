@@ -82,7 +82,7 @@ const Home: NextPage = () => {
             {topSubs?.map((sub) => (
               <div key={sub.name} className='flex items-center px-4 py-2 text-xs border-b'>
                 <Link href = {`/r/${sub.name}`}>
-                  <a>
+                  
                     <Image
                       src={sub.imageUrl}
                       className="rounded-full cursor-pointer"
@@ -91,12 +91,11 @@ const Home: NextPage = () => {
                       height={24}
 
                     />
-                  </a>
+                  
                 </Link>
-                <Link href={`/r/${sub.name}`}>
-                  <a className='ml-2 font-bold hover:cursor-pointer'>
+                <Link href={`/r/${sub.name}`} className='ml-2 font-bold hover:cursor-pointer'>
                   {sub.name}
-                  </a>
+                  
                 </Link>
                 <p className='ml-auto font-md '>{sub.postCount}</p>
                </div>
@@ -104,10 +103,9 @@ const Home: NextPage = () => {
            </div>
            {authenticated && 
           <div className="w-full py-6 text-center">
-            <Link href="/subs/create">
-              <a className='w-full p-2 text-center text-white bg-gray-400 rounded'>
+            <Link href="/subs/create" className='w-full p-2 text-center text-white bg-gray-400 rounded'>
                 커뮤니티 만들기
-              </a>
+              
             </Link>
           </div>
            

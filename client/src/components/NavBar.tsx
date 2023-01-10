@@ -55,7 +55,7 @@ const NavBar: React.FC = () => {
       {/* 로고이미지 */}
       <span className="text-2xl mt-1 px-10   md:w-6/12 font-semibold text-gray-400">
         <Link href="/">
-          <a>
+          
             <Image
               src="/logo6.png"
               alt="logo"
@@ -63,7 +63,7 @@ const NavBar: React.FC = () => {
               height={50}
             >
             </Image>
-          </a>
+          
         </Link>
       </span>
       {/* <div className= "max-w-full px-20"> */}
@@ -91,15 +91,13 @@ const NavBar: React.FC = () => {
              로그아웃
           </button>
           ) : (<>
-          <Link href="/login">
-            <a className="w-20 px-2 py-1 mr-2 text-sm text-center text-blue-500 border border-blue-500 rounded h-7">
+          <Link href="/login" className="w-20 px-2 py-1 mr-2 text-sm text-center text-blue-500 border border-blue-500 rounded h-7">
               로그인
-            </a>
+          
           </Link>
-          <Link href="/register">
-            <a className="w-20 px-2 py-1 text-sm text-center text-white bg-gray-400 rounded h-7">
+          <Link href="/register" className="w-20 px-2 py-1 text-sm text-center text-white bg-gray-400 rounded h-7">
             회원가입
-            </a>
+            
           </Link>
           </>)
           )}

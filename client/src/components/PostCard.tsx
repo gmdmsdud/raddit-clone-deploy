@@ -71,15 +71,14 @@ const PostCard = ({post: {
                         <div className='flex items-center'>
                             
                             <Link href={`/r/${subName}`}>
-                                <a>
+                               
                                     <Image 
                                         src={sub!.imageUrl} alt="sub" className="rounded-full cursor-pointer" width={12} height={12}/>
-                                </a>
+                               
                             </Link>
-                            <Link href={`/r/${subName}`}>
-                                <a className="ml-2 text-xs font-bold cursor-pointer hover:underline">
+                            <Link href={`/r/${subName}`} className="ml-2 text-xs font-bold cursor-pointer hover:underline">
                                     {subName}
-                                </a>
+                               
                             </Link>
                             <span className="mx-1 text-xs text-gray-400">•</span>
                         </div>
@@ -88,28 +87,25 @@ const PostCard = ({post: {
                     
                     <p className="text-xs text-gray-400">
                         작성자
-                        <Link href={`/u/${username}`}>
-                            <a className='mx-1 hover:underline'>{username}</a>
+                        <Link href={`/u/${username}`} className='mx-1 hover:underline'>{username}
                         </Link>
-                        <Link href={url}>
-                            <a className='mx-1 hover:underline'>
+                        <Link href={url} className='mx-1 hover:underline'>
                                 {dayjs(createdAt).format('YYYY-MM-DD HH:mm')}
-                            </a>
+                            
                         </Link>
                     </p>
                    {/* <button onClick={onDeleteClick}>Delete</button> */}
                 </div>
-                <Link href={url} >
-                    <a className=' my-1 text-lg font-medium'>{title}</a>
+                <Link href={url}  className=' my-1 text-lg font-medium'>{title}
                     
                 </Link>
                 {body && <pre style={{ whiteSpace: "pre-wrap"}} className='my-1 text-sm' >{body.length>150 ? `${body.slice(0,150)} ...` :body}</pre>}
                 <div className="flex">
                     <Link href={url}>
-                        <a>
+                        
                             <i className='mr-1 fas fa-comment-alt fa-xs'></i>
                             <span>{commentCount}</span>
-                        </a>
+                        
                     </Link>
                 </div>
             </div>

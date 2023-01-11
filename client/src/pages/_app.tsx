@@ -7,45 +7,36 @@ import { useRouter } from 'next/router';
 import { SWRConfig } from 'swr';
 import axios from 'axios';
 import Head from 'next/head';
-
+import Script from 'next/script';
 function MyApp({ Component, pageProps }: AppProps) {
   Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SURVER_BASE_URL + "/api";
   Axios.defaults.withCredentials =true;
-
   const { pathname } = useRouter();
   const authRoutes = ["/register", "/login"];
   const authRoute = authRoutes.includes(pathname);
-
   const fetcher = async (url: string) => {
     try {
         const res = await axios.get(url);
         return res.data;
-
     } catch (error:any) {
         throw error.response.data            
     }
 }
-
   return <>
-  <Head>
-  <script defer src="https://kit.fontawesome.com/0d9816814b.js" crossOrigin="anonymous"></script>
-  </Head>
-  
-  <SWRConfig
-    value = {{
-      fetcher
-    }}>
-    <AuthProvider>
-      {!authRoute && <NavBar />}
-      <div className={authRoute ? "":"pt-12 bg-gray-200 min-h-screen"}>
-      <Component {...pageProps} />
-      </div>
+    <>
+      <Script defer src="https://kit.fontawesome.com/0d9816814b.js" crossOrigin="anonymous"></Script>
+    </>
+    <SWRConfig
+      value = {{
+        fetcher
+      }}>
+      <AuthProvider>
+        {!authRoute && <NavBar />}
+        <div className={authRoute ? "":"pt-12 bg-gray-200 min-h-screen"}>
+         <Component {...pageProps} />
+        </div>
       </AuthProvider>
-
-  </SWRConfig>
+    </SWRConfig>
   </>
-
-
 }
-
 export default MyApp

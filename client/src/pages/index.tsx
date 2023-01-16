@@ -10,6 +10,7 @@ import { useAuthState } from '../context/auth'
 import useSWRInfinite from 'swr/infinite'
 import PostCard from '../components/PostCard'
 import { useEffect, useState } from 'react'
+
 const Home: NextPage = () => {
   const {authenticated}= useAuthState();
   const fetcher =async (url:string) => {
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
   const isInitialLoading = !data && !error;
   const posts:Post[] =data ? ([] as Post[]).concat(...data) : [];
   const {data: topSubs} =useSWR<Sub[]>(address,fetcher)
+  
   const [observedPost, setObservedPost] = useState("");
   useEffect(() => {
     if(!posts || posts.length === 0) return;
